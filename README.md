@@ -51,6 +51,7 @@ conda create -n video3dllm python=3.10 -y
 conda activate video3dllm
 pip install --upgrade pip  # Enable PEP 660 support.
 pip install -e ".[train]"
+pip install flash-attn --no-build-isolation     # install flash attention
 ```
 
 ## Data Preparation

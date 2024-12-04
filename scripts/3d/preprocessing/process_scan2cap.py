@@ -64,7 +64,7 @@ def load_scene(filename):
 
 def main(args):
 
-    for split in ["val"]:
+    for split in ["train", "val"]:
         n_miss = 0
         with open(os.path.join(args.scanrefer_dir, f"ScanRefer_filtered_{split}.json")) as f:
             data = json.load(f)

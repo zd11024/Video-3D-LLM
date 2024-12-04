@@ -40,7 +40,7 @@ train = [
     "wandb",
     "deepspeed==0.14.4",
     "peft==0.4.0",
-    "accelerate>=0.29.1",
+    "accelerate==0.33.0",
     "tokenizers~=0.15.2",
     "transformers@git+https://github.com/huggingface/transformers.git@1c39974a4c4036fd641bc1191cc32799f85715a4",
     "bitsandbytes==0.41.0",
