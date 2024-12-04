@@ -106,14 +106,14 @@ class VideoProcessor:
 
 
         if 'mc' in self.frame_sampling_strategy:
-            sampling_file = "data/processed/scannet_select_frames.json"
+            sampling_file = "data/metadata/scannet_select_frames.json"
             self.mc_sampling_files = {}
             with open(sampling_file) as f:
                 data = json.load(f)
                 for dd in data:
                     self.mc_sampling_files[dd['video_id']] = dd
 
-            with open('data/processed/pcd_discrete_0.1.pkl', 'rb') as f:
+            with open('data/metadata/pcd_discrete_0.1.pkl', 'rb') as f:
                 pc_data = pickle.load(f)
             self.pc_min = {}
             self.pc_max = {}

@@ -53,6 +53,10 @@ pip install --upgrade pip  # Enable PEP 660 support.
 pip install -e ".[train]"
 ```
 
+## Data Preparation
+For data preparation, please refer to this [instruction](scripts/3d/preprocessing/README.md) for detail.
+
+
 ## Acknowledgements
 We would like to thank the following works for their contributions to the opensourced codebase and community!
 * [LLaVA-Next](https://github.com/LLaVA-VL/LLaVA-NeXT/tree/main): the codebase our codebase is built upon.

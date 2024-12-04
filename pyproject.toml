@@ -59,6 +59,8 @@ train = [
     "decord",
     "tyro",
     "scipy",
+    "imageio",
+    "ray",
 ]
 
 
