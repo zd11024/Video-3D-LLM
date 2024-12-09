@@ -263,12 +263,14 @@ def find_all_linear_names(model):
     for name, module in model.named_modules():
         if any(mm_keyword in name for mm_keyword in multimodal_keywords):
             continue
-        if isinstance(module, cls):
+        if isinstance(module, cls) and "ground_head" not in name:
             names = name.split(".")
             lora_module_names.add(names[0] if len(names) == 1 else names[-1])
 
     if "lm_head" in lora_module_names:  # needed for 16-bit
         lora_module_names.remove("lm_head")
+    
+    rank0_print("lora_module_names", lora_module_names)
     return list(lora_module_names)
 
 
