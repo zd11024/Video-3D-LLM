@@ -1,6 +1,5 @@
 # Data Preparation
-
-## Preprocessing
+We have provided the processed data in [Hugging Face](https://huggingface.co/datasets/zd11024/Video-3D-LLM_data).
 The directory should be orgainized as 
 ```
 Video-3D-LLM # project root
@@ -24,6 +23,7 @@ Video-3D-LLM # project root
 │   │   ├── multi3drefer_val_llava_style.json
 │   │   ├── ...
 ```
+## Preprocessing
 ### ScanNet v2
 1. Download the ScanNet v2 dataset [here](http://www.scan-net.org/). The folder of ScanNet should look like
 ```
