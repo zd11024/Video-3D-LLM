@@ -61,15 +61,17 @@ pip install flash-attn --no-build-isolation     # install flash attention
 For data preparation, please refer to this [instruction](scripts/3d/preprocessing/README.md) for detail.
 
 ## Training & Inference
-### Training
-Full Fine-tuning: The sampling strategy should be in `['uniform', 'mc-ratio90', 'mc-ratio95']`.
+### Full-finetuned Training
+Our model is **fully fine-tuned** using a combination dataset from five tasks, including ScanRefer, Multi3DRefer, SQA3D, ScanQA, Scan2Cap.
+The option `frame_sampling_strategy` in `train_multi.sh` should be set to one of the following options: `['uniform', 'mc-ratio90', 'mc-ratio95']`, and the option `frames_upbound` determines the maximum number of frames used during training phase.
 ```bash
 sh scripts/3d/train/train_multi.sh
 ```
 
 ### Inference
 ```bash
-sh scripts/3d/eval/eval_scan2cap.sh $CKPT_NAME $SAMPLING_STRATEGY $MAX_FRAMES
+# example: sh scripts/3d/eval/eval_scan2cap.sh $CKPT uniform 32
+sh scripts/3d/eval/eval_scan2cap.sh $CKPT_NAME $SAMPLING_STRATEGY $MAX_FRAMES   
 ```
 
 
