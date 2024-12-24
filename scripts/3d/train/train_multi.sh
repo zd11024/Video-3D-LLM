@@ -70,7 +70,7 @@ torchrun --nnodes=1 --nproc_per_node="${NUM_GPUS}" --master_port 43000 \
     --tf32 True \
     --model_max_length 32768 \
     --gradient_checkpointing True \
-    --dataloader_num_workers 2 \
+    --dataloader_num_workers 1 \
     --lazy_preprocess True \
     --torch_compile True \
     --torch_compile_backend "inductor" \

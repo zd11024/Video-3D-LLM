@@ -60,6 +60,18 @@ pip install flash-attn --no-build-isolation     # install flash attention
 ## Data Preparation
 For data preparation, please refer to this [instruction](scripts/3d/preprocessing/README.md) for detail.
 
+## Training & Inference
+### Training
+Full Fine-tuning: The sampling strategy should be in `['uniform', 'mc-ratio90', 'mc-ratio95']`.
+```bash
+sh scripts/3d/train/train_multi.sh
+```
+
+### Inference
+```bash
+sh scripts/3d/eval/eval_scan2cap.sh $CKPT_NAME $SAMPLING_STRATEGY $MAX_FRAMES
+```
+
 
 ## Acknowledgements
 We would like to thank the following works for their contributions to the opensourced codebase and community!
