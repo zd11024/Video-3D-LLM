@@ -728,6 +728,22 @@ class LlavaMetaForCausalLM(ABC):
                         cur_pos_index += V * H * (W + 1)
                         cur_new_world_coords.append(new_coords)
 
+                    if "llava3d" in self.config.world_position_embedding_type:
+                        # world_coords_discrete[0] [32, 14, 14, 3]
+                        # cur_image_features    [6720, 3584]
+                        cur_image_features = cur_image_features.reshape(-1, 14, 15, 3584)[:, :, :-1, :].reshape(-1, 3584)
+                        cur_world_coords_discrete = world_coords_discrete[0].reshape(-1, 3)
+                        from collections import defaultdict
+                        coord2feat = defaultdict(list)
+
+                        for feat, coord in zip(cur_image_features, cur_world_coords_discrete):
+                            coord2feat[tuple(coord.tolist())].append(feat)
+                        new_cur_image_features = [torch.mean(torch.stack(v), dim=0) for k, v in coord2feat.items()]
+                        
+                        # sample points up to 3096
+                        indices = torch.randperm(len(new_cur_image_features))[:3096]
+                        new_cur_image_features = torch.stack([new_cur_image_features[i] for i in indices])
+                        cur_image_features = new_cur_image_features
 
                     cur_image_idx += 1
                     cur_new_input_embeds.append(cur_image_features)
